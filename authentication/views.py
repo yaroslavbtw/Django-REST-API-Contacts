@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib import auth
 from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
-from .serializers import UserSerializer
+from .serializers import UserSerializer, LoginSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -22,6 +22,7 @@ class RegisterView(GenericAPIView):
 
 
 class LoginView(GenericAPIView):
+    serializer_class = LoginSerializer
 
     def post(self, request):
         data = request.data
